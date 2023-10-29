@@ -1,9 +1,7 @@
-import React from 'react'
-
+import React from "react";
+import Layout from "../../Components/Navbar/Layout";
 const NoFound = () => {
-  return (
-    <div>NoFound</div>
-  )
-}
+  return <Layout>NoFound</Layout>;
+};
 
-export default NoFound
+export default NoFound;
