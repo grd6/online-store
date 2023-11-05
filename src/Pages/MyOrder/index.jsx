@@ -1,5 +1,5 @@
 import React from "react";
-import Layout from "../../Components/Navbar/Layout";
+import Layout from "../../Components/Layout";
 const MyOrder = () => {
   return <Layout>MyOrder</Layout>;
 };
