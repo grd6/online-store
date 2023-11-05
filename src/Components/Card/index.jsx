@@ -7,8 +7,15 @@ const Card = ({ items }) => {
   const context = useContext(ShoppingCartContext);
   console.log(context)
 
+const showProduct =(productDetail)=>{
+  {console.log(items)}
+  context.openProductDetail(items)
+  context.setProductToShow(productDetail)
+}
+
+
   return (
-    <div className="bg-white cursor-pointer w-56 h60 rounded-lg" onClick={()=>context.openProductDetail()}>
+    <div className="bg-white cursor-pointer w-56 h60 rounded-lg" onClick={()=>showProduct(items)}>
       <figure className="relative mb-2 w-full h-4/5">
         {console.log(items)}
         <span className="absolute bottom-0 left-0 bg-white/60 rounded-lg text-black text-xs m-2 px-3 py-0.5">
