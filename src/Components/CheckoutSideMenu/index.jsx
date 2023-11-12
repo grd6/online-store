@@ -2,10 +2,18 @@ import React from "react";
 import { useContext } from "react";
 import { XMarkIcon } from "@heroicons/react/24/solid";
 import { ShoppingCartContext } from "../../Context";
+import OrderCard from "../../Components/OrderCard"
+import {totalPrice} from "../../util"
 import "./style.css";
 
 const CheckoutSideMenu = () => {
   const context = useContext(ShoppingCartContext);
+  console.log("cart", context.cartProduct)
+  
+  const handDelete=(id)=>{
+    const filteredProduct = context.cartProduct.filter(product => product.id != id)
+    context.setCartProduct(filteredProduct)
+  }
   
   return (
     <aside
@@ -19,7 +27,25 @@ const CheckoutSideMenu = () => {
         <div >
           <XMarkIcon className="h-6 w-6 text-black" onClick={() => context.closeCheckoutsideMenu()}/>
         </div>
-      </div>|
+      </div>
+      <div className="px-6 overflow-y-scroll">
+      {context.cartProduct.map((Product)=>(
+        <OrderCard 
+        key={Product.id}
+        id={Product.id}
+        title={Product.title}
+        imageUrl={Product.images}
+        price={Product.price}
+        handDelete={handDelete}
+        />
+      ))}
+      </div>
+      <div className="px-6 ">
+        <p className="flex justify-between items-center">
+          <span className="font-light">Total:</span>
+          <span className="font-medium text-2xl">${totalPrice (context.cartProduct)}</span>
+        </p>
+      </div>
     </aside>
   );
 };
