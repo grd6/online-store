@@ -6,12 +6,17 @@ export const ShoppingCartContext = createContext();
 
 const ShoppingCartProvider = ({ children }) => {
   const [count, setCount] = useState(0);
+
+  const [productToShow, setProductToShow] = useState({});
+  const [cartProduct, setCartProduct] = useState([]);
+
   const [isProductDetailOpen, setIsProductDetailOpen] = useState(false);
-  const [productToShow,setProductToShow]= useState({})
-
-
   const openProductDetail = () => setIsProductDetailOpen(true);
   const closeProductDetail = () => setIsProductDetailOpen(false);
+
+  const [isCheckoutsideMenu, setIsPCheckoutsideMenuOpen] = useState(false);
+  const openCheckoutsideMenu = () => setIsPCheckoutsideMenuOpen(true);
+  const closeCheckoutsideMenu = () => setIsPCheckoutsideMenuOpen(false);
 
   console.log(count);
   return (
@@ -23,8 +28,13 @@ const ShoppingCartProvider = ({ children }) => {
         closeProductDetail,
         isProductDetailOpen,
         productToShow,
-        setProductToShow
-
+        setProductToShow,
+        cartProduct,
+        setCartProduct,
+        isCheckoutsideMenu,
+        setIsPCheckoutsideMenuOpen,
+        openCheckoutsideMenu,
+        closeCheckoutsideMenu
       }}
     >
       {children}
